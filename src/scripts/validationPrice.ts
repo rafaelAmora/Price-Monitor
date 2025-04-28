@@ -1,3 +1,4 @@
+import { nullable } from "zod";
 import { prisma } from "../db/prisma";
 import { AppError } from "../utils/AppError";
 import { findUrl } from "./priceMonitor";
@@ -34,12 +35,13 @@ export async function validationPrice() {
         }
 
         if (
-          product.precoAtual != null &&
-          product.precoDesejado > product.precoAtual &&
-          horas === 5
+          (product.precoAtual !== null &&
+            product.precoDesejado > product.precoAtual) &&
+          product.ultimoEmail === null ||
+          horas > 5
         ) {
           sendEmail(
-            product.precoAtual,
+            product.precoAtual!,
             product.precoDesejado,
             user.name,
             user.email,
