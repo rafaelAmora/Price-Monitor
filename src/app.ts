@@ -14,6 +14,6 @@ app.use(errorHandling);
 export { app };
 
 // Executa validationPrice a cada 5 horas (0 */5 * * *)
-// cron.schedule("0 */5 * * *", validationPrice);
-cron.schedule("*/1 * * * *", validationPrice);
+ cron.schedule("0 */5 * * *", validationPrice);
+// cron.schedule("*/1 * * * *", validationPrice);
 
