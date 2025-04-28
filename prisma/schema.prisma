@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String    @id @unique @default(uuid())
+  name     String
+  email    String    @unique
+  password String
+  Products Product[]
+
+  @@map("users")
+}
+
+model Product {
+  id            String    @id @unique @default(uuid())
+  url           String
+  nome          String?
+  urlImage      String?   @map("url_image")
+  precoDesejado Float     @map("preco_desejado")
+  precoAtual    Float?    @map("preco_atual")
+  atualizadoEm  DateTime? @updatedAt()
+  ultimoEmail   DateTime? @map("ultimo_email")
+  usuarioId     String    @map("user_id")
+
+  user User @relation(fields: [usuarioId], references: [id])
+
+  @@map("products")
+}
