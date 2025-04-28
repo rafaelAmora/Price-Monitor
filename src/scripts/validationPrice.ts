@@ -48,15 +48,15 @@ export async function validationPrice() {
           );
         }
 
-        // await prisma.product.update({
-        //   data: {
-        //     precoAtual: valor,
-        //     urlImage: imageUrl,
-        //   },
-        //   where: {
-        //     id: product.id,
-        //   },
-        // });
+        await prisma.product.update({
+          data: {
+            precoAtual: valor,
+            urlImage: imageUrl,
+          },
+          where: {
+            id: product.id,
+          },
+        });
       })
     );
 
