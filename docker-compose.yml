@@ -4,6 +4,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRESQL_USERNAME: postgres
-      POSTGRESQL_PASSWORD: Brasil@031025
-      POSTGRESQL_DATABASE: priceMonitor
+      POSTGRESQL_USERNAME: 
+      POSTGRESQL_PASSWORD: 
+      POSTGRESQL_DATABASE: 
